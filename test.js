@@ -7,12 +7,13 @@ Description: BiZ9 Framework: User - Test
 const async = require('async');
 const assert = require('node:assert');
 const {Log} = require("biz9-utility");
+const {Region_Logic,User_Logic,Title,Type,Field,Table} = require("./index");
+
 /*
  * availble tests
 - connect
 */
 /* --- TEST CONFIG START --- */
-const APP_ID = 'test-stage-feb17';
 /* --- TEST CONFIG END --- */
 
 /* --- DATA CONFIG END --- */
@@ -28,7 +29,9 @@ describe('connect', function(){ this.timeout(25000);
                 let print_test = true;
                 //-->
                 //-- BLANK START --//
-                //let parent = Data_Logic.get(Project_Table.PRODUCT,0,{data:{field_1:'value_'+Num.get_id(),field_2:'value_'+Num.get_id()}});
+                console.log('aaaaaaa');
+                //let countries = User_Logic.get_countries();
+                Log.w('aaaa',Region_Logic.get_states());
                 //-- BLANK END --//
                 //---
                 if(print_test){;
