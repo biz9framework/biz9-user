@@ -51,6 +51,11 @@ class User_Field {
 }
 
 class User_Logic {
+    static user_clean(data){
+        delete data[User_Type.RESULT_OK_USER_NAME];
+        delete data[User_Type.RESULT_OK_EMAIL];
+        return data;
+    };
     static get_user_roles(){
         return [
             {

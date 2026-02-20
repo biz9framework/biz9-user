@@ -28,9 +28,6 @@ describe('connect', function(){ this.timeout(25000);
                 //-->
                 let print_test = true;
                 //-->
-                //-- BLANK START --//
-                //let countries = User_Logic.get_countries();
-                //-- BLANK END --//
                 //---
                 if(print_test){;
                     Log.w('99_biz_data',biz_data);

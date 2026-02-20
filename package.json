@@ -1,6 +1,6 @@
 {
   "name": "biz9-user",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "** Description",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^3.2.6",
     "biz9-scriptz": "^5.8.12",
     "biz9-utility": "^4.4.28"
   }
