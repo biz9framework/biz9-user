@@ -1,0 +1,15 @@
+{
+  "name": "biz9-user",
+  "version": "1.0.4",
+  "description": "** Description",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "biz9-scriptz": "^5.8.12",
+    "biz9-utility": "^4.4.28"
+  }
+}
