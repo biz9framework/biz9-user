@@ -34,7 +34,7 @@ class User_Type {
     static RESULT_OK_UNIQUE = 'unique_resultOK';
     static RESULT_OK_FAVORITE_ADD = 'favorite_resultOK';
 }
-class User_Field {
+class Field {
     static USER = 'user';
     static USER_CITY = 'city';
     static USER_COUNTRY = 'country';
@@ -1219,5 +1219,5 @@ module.exports = {
     User_Title,
     User_Table,
     User_Type,
-    User_Field
+    Field
 };
