@@ -5,7 +5,7 @@ License GNU General Public License v3.0
 Description: BiZ9 Framework: User
 */
 const {Scriptz}=require("biz9-scriptz");
-const {Log,Str,Num}=require("biz9-utility");
+const {Log,Str,Num,Obj}=require("biz9-utility");
 const {Data_Logic} = require("/home/think1/www/doqbox/biz9-framework/biz9-data-logic/source");
 
 class User_Table {
@@ -51,7 +51,7 @@ class User_Field {
 }
 
 class User_Logic {
-    static user_clean(data){
+    static clean_user(data){
         delete data[User_Type.RESULT_OK_USER_NAME];
         delete data[User_Type.RESULT_OK_EMAIL];
         return data;
@@ -140,8 +140,9 @@ class User_Logic {
         req.session.user=null;
         delete req.session.user;
     }
-    static get_test = () =>{
-        let data = Data_Logic.get(User_Table.USER,0);
+    static get_test = (option) =>{
+        option = !Obj.check_is_empty(option) ? option : {};
+        let data = Data_Logic.get(User_Table.USER,0,option);
         data.role=User_Type.USER_ROLE_GUEST;
         data.title="user_name_"+ Num.get_id();
         data.title_url = Str.get_title_url(data.title);
