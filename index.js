@@ -140,7 +140,7 @@ class User_Logic {
         req.session.user=null;
         delete req.session.user;
     }
-    static get_test = (option) =>{
+    static get_test_user = (option) =>{
         option = !Obj.check_is_empty(option) ? option : {};
         let data = Data_Logic.get(User_Table.USER,0,option);
         data.role=User_Type.USER_ROLE_GUEST;
