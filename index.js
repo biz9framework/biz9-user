@@ -36,6 +36,7 @@ class User_Type {
 }
 class User_Field {
     static USER = 'user';
+    static USER_ID = 'user_id';
     static USER_CITY = 'city';
     static USER_COUNTRY = 'country';
     static USER_EMAIL = 'email';
@@ -139,6 +140,9 @@ class User_Logic {
     static delete_request_user(req){
         req.session.user=null;
         delete req.session.user;
+    }
+    static get_test = (option) =>{
+        return User_Logic.get_test_user(option);
     }
     static get_test_user = (option) =>{
         option = !Obj.check_is_empty(option) ? option : {};
