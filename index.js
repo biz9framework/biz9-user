@@ -14,19 +14,19 @@ class User_Table {
 }
 class User_Title {
     static USER='User';
-    static USER_ROLE_SUPER_ADMIN='Super Admin';
-    static USER_ROLE_ADMIN='Admin';
-    static USER_ROLE_MANAGER='Manager';
-    static USER_ROLE_USER='User';
-    static USER_ROLE_GUEST='Guest';
+    static SUPER_ADMIN='Super Admin';
+    static ADMIN='Admin';
+    static MANAGER='Manager';
+    static USER='User';
+    static GUEST='Guest';
 }
 class User_Type {
     //role
-    static USER_ROLE_SUPER_ADMIN='super_admin';
-    static USER_ROLE_ADMIN='admin';
-    static USER_ROLE_MANAGER='manager';
-    static USER_ROLE_USER='user';
-    static USER_ROLE_GUEST='guest';
+    static SUPER_ADMIN='super_admin';
+    static ADMIN='admin';
+    static MANAGER='manager';
+    static USER='user';
+    static GUEST='guest';
     //result
     static RESULT_OK_EMAIL = 'email_resultOK';
     static RESULT_OK_USER_NAME = 'user_name_resultOK';
@@ -60,30 +60,30 @@ class User_Logic {
     static get_user_roles(){
         return [
             {
-                value:User_Type.USER_ROLE_SUPER_ADMIN,
-                label:User_Title.USER_ROLE_SUPER_ADMIN,
-                title:User_Title.USER_ROLE_SUPER_ADMIN
+                value:User_Type.SUPER_ADMIN,
+                label:User_Title.SUPER_ADMIN,
+                title:User_Title.SUPER_ADMIN
             },
 
             {
-                value:User_Type.USER_ROLE_ADMIN,
-                label:User_Title.USER_ROLE_ADMIN,
-                title:User_Title.USER_ROLE_ADMIN
+                value:User_Type.ADMIN,
+                label:User_Title.ADMIN,
+                title:User_Title.ADMIN
             },
             {
-                value:User_Type.USER_ROLE_MANAGER,
+                value:User_Type.MANAGER,
                 label:User_Title.TITLE_USER_ROLE_MANAGER,
                 title:User_Type.TITLE_USER_ROLE_MANAGER
             },
             {
-                value:User_Type.USER_ROLE_USER,
-                label:User_Title.USER_ROLE_USER,
-                title:User_Title.USER_ROLE_USER
+                value:User_Type.USER,
+                label:User_Title.USER,
+                title:User_Title.USER
             },
             {
-                value:User_Type.USER_ROLE_GUEST,
-                label:User_Title.USER_ROLE_GUEST,
-                title:User_Title.USER_ROLE_GUEST
+                value:User_Type.GUEST,
+                label:User_Title.GUEST,
+                title:User_Title.GUEST
             },
         ];
     };
@@ -92,7 +92,7 @@ class User_Logic {
         if(item_match){
             return item_match;
         }else{
-            return {value:User_Type.USER_ROLE_GUEST,label:User_Title.USER_ROLE_GUEST,title:User_Title.USER_ROLE_GUEST};
+            return {value:User_Type.GUEST,label:User_Title.GUEST,title:User_Title.GUEST};
         }
     };
     static get_country_state_city(item){
@@ -147,7 +147,7 @@ class User_Logic {
     static get_test_user = (option) =>{
         option = !Obj.check_is_empty(option) ? option : {};
         let data = Data_Logic.get(User_Table.USER,0,option);
-        data.role=User_Type.USER_ROLE_GUEST;
+        data.role=User_Type.GUEST;
         data.title="user_name_"+ Num.get_id();
         data.title_url = Str.get_title_url(data.title);
         data.title="UserName"+ Num.get_id();
