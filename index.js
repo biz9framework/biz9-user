@@ -8,6 +8,12 @@ const {Scriptz}=require("biz9-scriptz");
 const {Log,Str,Num,Obj}=require("biz9-utility");
 const {Data_Logic} = require("/home/think1/www/doqbox/biz9-framework/biz9-data-logic/source");
 
+class User_Url {
+    static LOGIN="user/login";
+    static LOGOUT="user/logout";
+    static REGISTER="user/register";
+    static POST="user/post";
+}
 class User_Table {
     static Blank='blank_biz';
     static USER='user_biz';
@@ -37,20 +43,18 @@ class User_Type {
 class User_Field {
     static USER = 'user';
     static USER_ID = 'user_id';
-    static USER_CITY = 'city';
-    static USER_COUNTRY = 'country';
-    static USER_EMAIL = 'email';
-    static USER_FIRST_NAME = 'first_name';
-    static USER_GENDER = 'gender';
-    static USER_ID='user_id';
-    static USER_LAST_NAME = 'last_name';
-    static USER_USERNAME = 'username';
-    static USER_PASSWORD = 'password';
-    static USER_ROLE = 'role';
-    static USER_STATE = 'state';
+    static CITY = 'city';
+    static COUNTRY = 'country';
+    static EMAIL = 'email';
+    static FIRST_NAME = 'first_name';
+    static GENDER = 'gender';
+    static LAST_NAME = 'last_name';
+    static USERNAME = 'username';
+    static PASSWORD = 'password';
+    static ROLE = 'role';
+    static STATE = 'state';
     static WEBSITE = 'website';
 }
-
 class User_Logic {
     static clean_user(data){
         delete data[User_Type.RESULT_OK_USER_NAME];
@@ -1229,5 +1233,6 @@ module.exports = {
     User_Title,
     User_Table,
     User_Type,
+    User_Url,
     User_Field
 };
