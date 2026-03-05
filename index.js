@@ -12,6 +12,8 @@ class User_Url {
     static LOGIN="user/login";
     static LOGOUT="user/logout";
     static REGISTER="user/register";
+    static PING_GET="user/ping_get";
+    static PING_POST="user/ping_post";
     static POST="user/post";
 }
 class User_Table {
@@ -28,17 +30,18 @@ class User_Title {
 }
 class User_Type {
     //role
-    static SUPER_ADMIN='super_admin';
     static ADMIN='admin';
-    static MANAGER='manager';
-    static USER='user';
     static GUEST='guest';
+    static MANAGER='manager';
+    static SUPER_ADMIN='super_admin';
+    static USER='user';
     //result
     static RESULT_OK_EMAIL = 'email_resultOK';
+    static RESULT_OK_FAVORITE_ADD = 'favorite_resultOK';
+    static RESULT_OK_UNIQUE = 'unique_resultOK';
+    static RESULT_OK_PASSWORD = 'user_name_passwordOK';
     static RESULT_OK_USER_NAME = 'user_name_resultOK';
     static RESULT_OK_USER = 'user_resultOK';
-    static RESULT_OK_UNIQUE = 'unique_resultOK';
-    static RESULT_OK_FAVORITE_ADD = 'favorite_resultOK';
 }
 class User_Field {
     static USER = 'user';
@@ -91,6 +94,20 @@ class User_Logic {
             },
         ];
     };
+    static get_check_user(post_user){
+        post_user[User_Type.RESULT_OK_USER] = false;
+        post_user[User_Type.RESULT_OK_USER_NAME] = false;
+        post_user[User_Type.RESULT_OK_EMAIL] = false;
+        post_user[User_Type.RESULT_OK_PASSWORD] = false;
+        return post_user;
+    }
+    static get_clean_user(post_user){
+        delete post_user[User_Type.RESULT_OK_USER];
+        delete post_user[User_Type.RESULT_OK_USER_NAME];
+        delete post_user[User_Type.RESULT_OK_EMAIL];
+        delete post_user[User_Type.RESULT_OK_PASSWORD];
+        return post_user;
+    }
     static get_user_role_by_type(type){
         let item_match =  User_Logic.get_user_roles().find(item_find => item_find.value === type);
         if(item_match){
