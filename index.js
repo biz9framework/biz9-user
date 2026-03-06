@@ -9,12 +9,11 @@ const {Log,Str,Num,Obj}=require("biz9-utility");
 const {Data_Logic} = require("biz9-data-logic");
 
 class User_Url {
-    static LOGIN="user/login";
-    static LOGOUT="user/logout";
-    static REGISTER="user/register";
-    static PING_GET="user/ping_get";
-    static PING_POST="user/ping_post";
-    static POST="user/post";
+    static LOGIN="biz9/user/login";
+    static LOGOUT="biz9/user/logout";
+    static REGISTER="biz9/user/register";
+    static PING_GET="biz9/user/ping_get";
+    static PING_POST="biz9/user/ping_post";
 }
 class User_Table {
     static Blank='blank_biz';
@@ -39,8 +38,8 @@ class User_Type {
     static RESULT_OK_EMAIL = 'email_resultOK';
     static RESULT_OK_FAVORITE_ADD = 'favorite_resultOK';
     static RESULT_OK_UNIQUE = 'unique_resultOK';
-    static RESULT_OK_PASSWORD = 'user_name_passwordOK';
-    static RESULT_OK_USER_NAME = 'user_name_resultOK';
+    static RESULT_OK_PASSWORD = 'password_passwordOK';
+    static RESULT_OK_USERNAME = 'username_resultOK';
     static RESULT_OK_USER = 'user_resultOK';
 }
 class User_Field {
@@ -59,12 +58,7 @@ class User_Field {
     static WEBSITE = 'website';
 }
 class User_Logic {
-    static clean_user(data){
-        delete data[User_Type.RESULT_OK_USER_NAME];
-        delete data[User_Type.RESULT_OK_EMAIL];
-        return data;
-    };
-    static get_user_roles(){
+    static get_user_roles = () =>{
         return [
             {
                 value:User_Type.SUPER_ADMIN,
@@ -79,8 +73,8 @@ class User_Logic {
             },
             {
                 value:User_Type.MANAGER,
-                label:User_Title.TITLE_USER_ROLE_MANAGER,
-                title:User_Type.TITLE_USER_ROLE_MANAGER
+                label:User_Title.MANAGER,
+                title:User_Type.MANAGER
             },
             {
                 value:User_Type.USER,
@@ -94,21 +88,21 @@ class User_Logic {
             },
         ];
     };
-    static get_check_user(post_user){
+    static get_check_user = (post_user) =>{
         post_user[User_Type.RESULT_OK_USER] = false;
-        post_user[User_Type.RESULT_OK_USER_NAME] = false;
+        post_user[User_Type.RESULT_OK_USERNAME] = false;
         post_user[User_Type.RESULT_OK_EMAIL] = false;
         post_user[User_Type.RESULT_OK_PASSWORD] = false;
         return post_user;
     }
-    static get_clean_user(post_user){
+    static get_clean_user = (post_user) =>{
         delete post_user[User_Type.RESULT_OK_USER];
-        delete post_user[User_Type.RESULT_OK_USER_NAME];
+        delete post_user[User_Type.RESULT_OK_USERNAME];
         delete post_user[User_Type.RESULT_OK_EMAIL];
         delete post_user[User_Type.RESULT_OK_PASSWORD];
         return post_user;
     }
-    static get_user_role_by_type(type){
+    static get_user_role_by_type = (type) =>{
         let item_match =  User_Logic.get_user_roles().find(item_find => item_find.value === type);
         if(item_match){
             return item_match;
@@ -116,7 +110,7 @@ class User_Logic {
             return {value:User_Type.GUEST,label:User_Title.GUEST,title:User_Title.GUEST};
         }
     };
-    static get_country_state_city(item){
+    static get_country_state_city = (item) =>{
         let country_state_city = "";
         if(item.country == "United States"){
             let state = "";
@@ -140,38 +134,38 @@ class User_Logic {
         }
         return country_state_city;
     }
-    static get_full_name(first_name,last_name){
+    static get_full_name = (first_name,last_name) =>{
         let str_first_name = !Str.check_is_null(first_name) ? first_name : "";
         let str_last_name = !Str.check_is_null(last_name) ? last_name : "";
         return !Str.check_is_null(String(str_first_name + " " + str_last_name)) ? String(str_first_name + " " + str_last_name).trim() : "N/A";
     }
-    static get_guest(){
+    static get_guest = () =>{
         return Data_Logic.get(User_Table.USER,0,{data:{is_guest:true,title_url:'guest',first_name:'Guest',last_name:'User',email:'guest@email.com',title:"Guest",country:"United States"}});
     }
-    static get_request_user(req){
+    static get_request_user = (req) =>{
         if(!req || !req.session.user){
             let user=Data_Logic.get(User_Table.USER,Num.get_id(9999999),{data:{is_guest:true}});
             req.session.user=user;
         }
         return req.session.user;
-    }
-    static post_request_user(req,user){
+    };
+    static post_request_user = (req,user) =>{
         req.session.user=user;
-    }
-    static delete_request_user(req){
+    };
+    static delete_request_user = (req) =>{
         req.session.user=null;
         delete req.session.user;
-    }
+    };
     static get_test = (option) =>{
         return User_Logic.get_test_user(option);
-    }
+    };
     static get_test_user = (option) =>{
         option = !Obj.check_is_empty(option) ? option : {};
         let data = Data_Logic.get(User_Table.USER,0,option);
         data.role=User_Type.GUEST;
-        data.title="user_name_"+ Num.get_id();
+        data.title="title_"+ Num.get_id();
         data.title_url = Str.get_title_url(data.title);
-        data.title="UserName"+ Num.get_id();
+        data.username="username_"+ Num.get_id();
         data.first_name="First Name "+ Num.get_id();
         data.last_name="First Name "+ Num.get_id();
         data.email="email"+ Num.get_id() + "@email.com";

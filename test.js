@@ -28,6 +28,8 @@ describe('connect', function(){ this.timeout(25000);
                 //-->
                 let print_test = true;
                 //-->
+                let post_user = User_Logic.get_test();
+                let biz_data = User_Logic.get_clean_user(post_user);
                 //---
                 if(print_test){;
                     Log.w('99_biz_data',biz_data);
