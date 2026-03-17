@@ -15,6 +15,10 @@ class User_Url {
     static PING_GET="biz9/user/ping_get";
     static PING_POST="biz9/user/ping_post";
 }
+class User_Stat {
+    static LOGIN_POST="login_post";
+    static REGISTER_POST="register_post";
+}
 class User_Table {
     static Blank='blank_biz';
     static USER='user_biz';
@@ -1239,11 +1243,12 @@ class Region_Logic {
     }
 }
 module.exports = {
-    User_Logic,
     Region_Logic,
+    User_Field,
+    User_Logic,
+    User_Stat,
     User_Title,
     User_Table,
     User_Type,
-    User_Url,
-    User_Field
+    User_Url
 };
