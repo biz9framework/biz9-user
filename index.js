@@ -55,6 +55,7 @@ class User_Field {
     static COUNTRY = 'country';
     static EMAIL = 'email';
     static FIRST_NAME = 'first_name';
+    static IMAGE_FILENAME = 'image_filename';
     static GENDER = 'gender';
     static LAST_NAME = 'last_name';
     static USERNAME = 'username';
