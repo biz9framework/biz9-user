@@ -12,6 +12,7 @@ class User_Url {
     static LOGIN="biz9/user/login";
     static LOGOUT="biz9/user/logout";
     static REGISTER="biz9/user/register";
+    static POST="biz9/user/post";
     static PING_GET="biz9/user/ping_get";
     static PING_POST="biz9/user/ping_post";
 }
@@ -40,8 +41,9 @@ class User_Type {
     static USER='user';
     //result
     static RESULT_OK_EMAIL = 'email_resultOK';
+    static RESULT_OK_UNIQUE_EMAIL = 'unique_email_resultOK';
+    static RESULT_OK_UNIQUE_USERNAME = 'unique_username_resultOK';
     static RESULT_OK_FAVORITE_ADD = 'favorite_resultOK';
-    static RESULT_OK_UNIQUE = 'unique_resultOK';
     static RESULT_OK_PASSWORD = 'password_passwordOK';
     static RESULT_OK_USERNAME = 'username_resultOK';
     static RESULT_OK_USER = 'user_resultOK';
