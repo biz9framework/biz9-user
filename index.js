@@ -16,8 +16,8 @@ class User_Url {
     static PING_POST="biz9/user/ping_post";
 }
 class User_Stat {
-    static LOGIN_POST="login_post";
-    static REGISTER_POST="register_post";
+    static POST_LOGIN="post_logic";
+    static POST_REGISTER="post_register";
 }
 class User_Table {
     static Blank='blank_biz';
