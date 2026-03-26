@@ -68,6 +68,7 @@ class User_Field {
     static PASSWORD = 'password';
     static ROLE = 'role';
     static STATE = 'state';
+    static TYPE = 'type';
     static WEBSITE = 'website';
 }
 class User_Logic {
