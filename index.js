@@ -68,7 +68,6 @@ class User_Field {
     static PASSWORD = 'password';
     static ROLE = 'role';
     static STATE = 'state';
-    static TYPE = 'type';
     static WEBSITE = 'website';
 }
 class User_Logic {
@@ -92,6 +91,12 @@ class User_Logic {
             case User_Response.POST_FAIL:
                 return "Post failed.";
                 break;
+            default:
+                if(response){
+                    return response;
+                }else{
+                    return "Error Message Not Availble";
+                }
         }
     }
     static get_user_roles = () =>{
