@@ -71,6 +71,28 @@ class User_Field {
     static WEBSITE = 'website';
 }
 class User_Logic {
+    static get_message_by_response = (response) =>{
+        switch(response){
+            case User_Response.EMAIL_FAIL:
+                return "Email address is not valid.";
+                break;
+            case User_Response.EMAIL_UNIQUE_FAIL:
+                return "Email address is not availble.";
+                break;
+             case User_Response.USERNAME_UNIQUE_FAIL:
+                return "Username is not availble.";
+                break;
+            case User_Response.PASSWORD_FAIL:
+                return "Password is incorrect.";
+                break;
+            case User_Response.LOGIN_FAIL:
+                return "Login failed.";
+                break;
+            case User_Response.POST_FAIL:
+                return "Post failed.";
+                break;
+        }
+    }
     static get_user_roles = () =>{
         return [
             {

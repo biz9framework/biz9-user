@@ -7,7 +7,7 @@ Description: BiZ9 Framework: User - Test
 const async = require('async');
 const assert = require('node:assert');
 const {Log} = require("biz9-utility");
-const {Region_Logic,User_Logic,User_Title,User_Type,User_Field,Table} = require("./index");
+const {Region_Logic,User_Title,User_Type,User_Field,Table,User_Logic,User_Response} = require("./index");
 
 /*
  * availble tests
@@ -26,14 +26,8 @@ describe('connect', function(){ this.timeout(25000);
         async.series([
             async function(call){
                 //-->
-                let print_test = true;
-                //-->
-                let post_user = User_Logic.get_test();
-                let biz_data = User_Logic.get_clean_user(post_user);
-                //---
-                if(print_test){;
-                    Log.w('99_biz_data',biz_data);
-                }
+
+                Log.w('get_message',User_Logic.get_message_by_response(User_Response.LOGIN_FAIL));
             },
         ],
             function(error, result){
