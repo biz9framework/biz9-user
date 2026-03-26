@@ -95,12 +95,13 @@ class User_Logic {
             },
         ];
     };
-    static get_check_user = (post_user) =>{
-        post_user[User_Type.RESULT_OK_USER] = false;
-        post_user[User_Type.RESULT_OK_USERNAME] = false;
-        post_user[User_Type.RESULT_OK_EMAIL] = false;
-        post_user[User_Type.RESULT_OK_PASSWORD] = false;
-        return post_user;
+    static get_check_user = () =>{
+        let check_user = {};
+        check_user[User_Type.RESULT_OK_USER] = false;
+        check_user[User_Type.RESULT_OK_USERNAME] = false;
+        check_user[User_Type.RESULT_OK_EMAIL] = false;
+        check_user[User_Type.RESULT_OK_PASSWORD] = false;
+        return check_user;
     }
     static get_clean_user = (post_user) =>{
         delete post_user[User_Type.RESULT_OK_USER];
@@ -166,12 +167,17 @@ class User_Logic {
     static get_test = (option) =>{
         return User_Logic.get_test_user(option);
     };
+    static get_test_users = (count,option) =>{
+        let users = [];
+        for(let a = 0; a < count; a++){
+            users.push(User_Logic.get_test_user());
+        }
+        return users;
+    };
     static get_test_user = (option) =>{
         option = !Obj.check_is_empty(option) ? option : {};
         let data = Data_Logic.get(User_Table.USER,0,option);
-        data.role=User_Type.GUEST;
-        data.title="title_"+ Num.get_id();
-        data.title_url = Str.get_title_url(data.title);
+        data.role=User_Logic.get_user_roles()[Num.get_id(User_Logic.get_user_roles().length)].value;
         data.username="username_"+ Num.get_id();
         data.first_name="First Name "+ Num.get_id();
         data.last_name="First Name "+ Num.get_id();
@@ -179,7 +185,7 @@ class User_Logic {
         data.city="City "+ Num.get_id();
         data.state= Region_Logic.get_states()[Num.get_id(Region_Logic.get_states().length)].label;
         data.country= Region_Logic.get_countries()[Num.get_id(Region_Logic.get_countries().length)].label;
-        data.password="1234567";
+        data.password="123456789Ab!";
         return data;
     };
 }

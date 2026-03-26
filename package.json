@@ -1,6 +1,6 @@
 {
   "name": "biz9-user",
-  "version": "2.0.23",
+  "version": "2.0.24",
   "description": "** Description",
   "main": "index.js",
   "scripts": {
@@ -10,9 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "async": "^3.2.6",
-    "biz9-data-logic": "^11.7.18",
+    "biz9-data-logic": "^11.7.27",
     "biz9-scriptz": "^5.8.30",
-    "biz9-utility": "^4.7.34"
+    "biz9-utility": "^4.7.38"
   },
   "repository": {
     "type": "git",
