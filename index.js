@@ -32,6 +32,20 @@ class User_Title {
     static USER='User';
     static GUEST='Guest';
 }
+class User_Response {
+    static EMAIL_OK = 'email_ok';
+    static EMAIL_FAIL = 'email_fail';
+    static EMAIL_UNIQUE_FAIL = 'email_unique_fail';
+    static USERNAME_OK = 'username_ok';
+    static USERNAME_FAIL = 'username_fail';
+    static USERNAME_UNIQUE_FAIL = 'username_unique_fail';
+    static PASSWORD_OK = 'password_ok';
+    static PASSWORD_FAIL = 'password_fail';
+    static LOGIN_SUCCESS = 'login_success';
+    static LOGIN_FAIL = 'login_fail';
+    static POST_SUCCESS = 'post_success';
+    static POST_FAIL = 'post_fail';
+}
 class User_Type {
     //role
     static ADMIN='admin';
@@ -39,14 +53,6 @@ class User_Type {
     static MANAGER='manager';
     static SUPER_ADMIN='super_admin';
     static USER='user';
-    //result
-    static RESULT_OK_EMAIL = 'email_resultOK';
-    static RESULT_OK_UNIQUE_EMAIL = 'unique_email_resultOK';
-    static RESULT_OK_UNIQUE_USERNAME = 'unique_username_resultOK';
-    static RESULT_OK_FAVORITE_ADD = 'favorite_resultOK';
-    static RESULT_OK_PASSWORD = 'password_passwordOK';
-    static RESULT_OK_USERNAME = 'username_resultOK';
-    static RESULT_OK_USER = 'user_resultOK';
 }
 class User_Field {
     static USER = 'user';
@@ -1255,6 +1261,7 @@ module.exports = {
     Region_Logic,
     User_Field,
     User_Logic,
+    User_Response,
     User_Stat,
     User_Title,
     User_Table,
