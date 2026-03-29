@@ -5,7 +5,7 @@ License GNU General Public License v3.0
 Description: BiZ9 Framework: User
 */
 const {Scriptz}=require("biz9-scriptz");
-const {Log,Str,Num,Obj}=require("biz9-utility");
+const {Log,Str,Num,Obj,Response_Field}=require("/home/think1/www/doqbox/biz9-framework/biz9-utility/source");
 const {Data_Logic} = require("biz9-data-logic");
 
 class User_Url {
@@ -32,7 +32,7 @@ class User_Title {
     static USER='User';
     static GUEST='Guest';
 }
-class User_Response {
+class User_Response_Field {
     static EMAIL_OK = 'email_ok';
     static EMAIL_FAIL = 'email_fail';
     static EMAIL_UNIQUE_FAIL = 'email_unique_fail';
@@ -44,15 +44,11 @@ class User_Response {
     static LOGIN = 'login_ok';
     static LOGIN_SUCCESS = 'login_success';
     static LOGIN_FAIL = 'login_fail';
-    static POST_SUCCESS = 'post_success';
-    static POST_FAIL = 'post_fail';
     static USER = 'param_user';
     static EMAIL = 'param_email';
     static PASSWORD = 'param_password';
     static USERNAME = 'param_username';
     static LOGIN_QUERY = 'param_login_query';
-    static OPTION = 'param_option';
-
 }
 class User_Type {
     //role
@@ -81,35 +77,41 @@ class User_Field {
 class User_Logic {
     static get_message_by_response = (response) =>{
         switch(response){
-            case User_Response.EMAIL_FAIL:
+            case User_Response_Field.EMAIL_FAIL:
                 return "Email address is not valid.";
                 break;
-            case User_Response.EMAIL_UNIQUE_FAIL:
+            case User_Response_Field.EMAIL_UNIQUE_FAIL:
                 return "Email address is taken.";
                 break;
-             case User_Response.USERNAME_UNIQUE_FAIL:
+             case User_Response_Field.USERNAME_UNIQUE_FAIL:
                 return "Username is taken.";
                 break;
-            case User_Response.PASSWORD_FAIL:
+            case User_Response_Field.PASSWORD_FAIL:
                 return "Password is incorrect.";
                 break;
-            case User_Response.LOGIN_FAIL:
+            case User_Response_Field.LOGIN_FAIL:
                 return "Login failed.";
                 break;
-            case User_Response.LOGIN_SUCCESS:
+            case User_Response_Field.LOGIN_SUCCESS:
                 return "Login Success.";
                 break;
-            case User_Response.POST_FAIL:
+            case User_Response_Field.POST_FAIL:
                 return "Post failed.";
                 break;
-            case User_Response.EMAIL_OK:
+            case User_Response_Field.EMAIL_OK:
                 return "Email Success.";
                 break;
-            case User_Response.USERNAME_OK:
+            case User_Response_Field.USERNAME_OK:
                 return "Username Success.";
                 break;
-            case User_Response.PASSWORD_OK:
+            case User_Response_Field.PASSWORD_OK:
                 return "Password Success.";
+                break;
+            case Response_Field.POST_CONFIRM:
+                return "Post Successful.";
+                break;
+            case Response_Field.POST_FAIL:
+                return "Post Fail.";
                 break;
             default:
                 if(response){
@@ -1309,7 +1311,7 @@ module.exports = {
     Region_Logic,
     User_Field,
     User_Logic,
-    User_Response,
+    User_Response_Field,
     User_Stat,
     User_Title,
     User_Table,
