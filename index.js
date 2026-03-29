@@ -41,10 +41,18 @@ class User_Response {
     static USERNAME_UNIQUE_FAIL = 'username_unique_fail';
     static PASSWORD_OK = 'password_ok';
     static PASSWORD_FAIL = 'password_fail';
+    static LOGIN = 'login_ok';
     static LOGIN_SUCCESS = 'login_success';
     static LOGIN_FAIL = 'login_fail';
     static POST_SUCCESS = 'post_success';
     static POST_FAIL = 'post_fail';
+    static USER = 'param_user';
+    static EMAIL = 'param_email';
+    static PASSWORD = 'param_password';
+    static USERNAME = 'param_username';
+    static LOGIN_QUERY = 'param_login_query';
+    static OPTION = 'param_option';
+
 }
 class User_Type {
     //role
@@ -77,10 +85,10 @@ class User_Logic {
                 return "Email address is not valid.";
                 break;
             case User_Response.EMAIL_UNIQUE_FAIL:
-                return "Email address is not availble.";
+                return "Email address is taken.";
                 break;
              case User_Response.USERNAME_UNIQUE_FAIL:
-                return "Username is not availble.";
+                return "Username is taken.";
                 break;
             case User_Response.PASSWORD_FAIL:
                 return "Password is incorrect.";
@@ -88,8 +96,20 @@ class User_Logic {
             case User_Response.LOGIN_FAIL:
                 return "Login failed.";
                 break;
+            case User_Response.LOGIN_SUCCESS:
+                return "Login Success.";
+                break;
             case User_Response.POST_FAIL:
                 return "Post failed.";
+                break;
+            case User_Response.EMAIL_OK:
+                return "Email Success.";
+                break;
+            case User_Response.USERNAME_OK:
+                return "Username Success.";
+                break;
+            case User_Response.PASSWORD_OK:
+                return "Password Success.";
                 break;
             default:
                 if(response){
