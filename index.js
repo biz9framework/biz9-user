@@ -33,22 +33,22 @@ class User_Title {
     static GUEST='Guest';
 }
 class User_Response_Field {
-    static EMAIL_OK = 'email_ok';
+    static EMAIL_CONFIRM = 'email_confirm';
     static EMAIL_FAIL = 'email_fail';
     static EMAIL_UNIQUE_FAIL = 'email_unique_fail';
-    static USERNAME_OK = 'username_ok';
+    static USERNAME_CONFIRM = 'username_confirm';
     static USERNAME_FAIL = 'username_fail';
     static USERNAME_UNIQUE_FAIL = 'username_unique_fail';
-    static PASSWORD_OK = 'password_ok';
+    static PASSWORD_CONFIRM = 'password_confirm';
     static PASSWORD_FAIL = 'password_fail';
-    static LOGIN = 'login_ok';
-    static LOGIN_SUCCESS = 'login_success';
-    static LOGIN_FAIL = 'login_fail';
-    static USER = 'param_user';
-    static EMAIL = 'param_email';
-    static PASSWORD = 'param_password';
-    static USERNAME = 'param_username';
+    static PARAM_USER = 'param_user';
+    static PARAM_EMAIL = 'param_email';
+    static PARAM_USERNAME = 'param_username';
     static LOGIN_QUERY = 'param_login_query';
+    static LOGIN_CONFIRM = 'login_success';
+    static LOGIN_FAIL = 'login_fail';
+    static REGISTER_CONFIRM = 'register_confirm';
+    static REGISTER_FAIL = 'register_fail';
 }
 class User_Type {
     //role
@@ -92,19 +92,19 @@ class User_Logic {
             case User_Response_Field.LOGIN_FAIL:
                 return "Login failed.";
                 break;
-            case User_Response_Field.LOGIN_SUCCESS:
-                return "Login Success.";
+            case User_Response_Field.LOGIN_CONFIRM:
+                return "Login Successful.";
                 break;
             case User_Response_Field.POST_FAIL:
                 return "Post failed.";
                 break;
-            case User_Response_Field.EMAIL_OK:
+            case User_Response_Field.EMAIL_CONFIRM:
                 return "Email Success.";
                 break;
-            case User_Response_Field.USERNAME_OK:
+            case User_Response_Field.USERNAME_CONFIRM:
                 return "Username Success.";
                 break;
-            case User_Response_Field.PASSWORD_OK:
+            case User_Response_Field.PASSWORD_CONFIRM:
                 return "Password Success.";
                 break;
             case Response_Field.POST_CONFIRM:
@@ -112,6 +112,12 @@ class User_Logic {
                 break;
             case Response_Field.POST_FAIL:
                 return "Post Fail.";
+                break;
+            case User_Response_Field.REGISTER_CONFIRM:
+                return "Registration Successful.";
+                break;
+            case User_Response_Field.REGISTER_FAIL:
+                return "Registration Fail.";
                 break;
             default:
                 if(response){
@@ -151,21 +157,6 @@ class User_Logic {
             },
         ];
     };
-    static get_check_user = () =>{
-        let check_user = {};
-        check_user[User_Type.RESULT_OK_USER] = false;
-        check_user[User_Type.RESULT_OK_USERNAME] = false;
-        check_user[User_Type.RESULT_OK_EMAIL] = false;
-        check_user[User_Type.RESULT_OK_PASSWORD] = false;
-        return check_user;
-    }
-    static get_clean_user = (post_user) =>{
-        delete post_user[User_Type.RESULT_OK_USER];
-        delete post_user[User_Type.RESULT_OK_USERNAME];
-        delete post_user[User_Type.RESULT_OK_EMAIL];
-        delete post_user[User_Type.RESULT_OK_PASSWORD];
-        return post_user;
-    }
     static get_user_role_by_type = (type) =>{
         let item_match =  User_Logic.get_user_roles().find(item_find => item_find.value === type);
         if(item_match){
