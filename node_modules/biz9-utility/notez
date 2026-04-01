@@ -1,0 +1,14 @@
+ static get_message_response_result = (type,status,message) => {
+         let response=Response_Logic.get();
+        let message_response_result = [];
+
+        for(let value in message){
+            response.messages.push(Response_Logic.get_message(type,status,message));
+        }
+
+        //response =  get_status(response);
+        //Log.w('44_rrr',response);
+        //return {type:type,status:status,message:message,message_response_result:message_response_result};
+    }
+
+

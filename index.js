@@ -5,7 +5,7 @@ License GNU General Public License v3.0
 Description: BiZ9 Framework: User
 */
 const {Scriptz}=require("biz9-scriptz");
-const {Log,Str,Num,Obj,Response_Field}=require("/home/think1/www/doqbox/biz9-framework/biz9-utility/source");
+const {Log,Str,Num,Obj,Response_Field}=require("biz9-utility");
 const {Data_Logic} = require("biz9-data-logic");
 
 class User_Url {
@@ -44,6 +44,7 @@ class User_Response_Field {
     static PARAM_USER = 'param_user';
     static PARAM_EMAIL = 'param_email';
     static PARAM_USERNAME = 'param_username';
+    static PARAM_PASSWORD = 'param_password';
     static LOGIN_QUERY = 'param_login_query';
     static LOGIN_CONFIRM = 'login_success';
     static LOGIN_FAIL = 'login_fail';
@@ -75,8 +76,8 @@ class User_Field {
     static WEBSITE = 'website';
 }
 class User_Logic {
-    static get_message_by_response_field = (response) =>{
-        switch(response){
+    static get_message_by_response_field = (response_field) =>{
+        switch(response_field){
             case User_Response_Field.EMAIL_FAIL:
                 return "Email address is not valid.";
                 break;
@@ -120,8 +121,8 @@ class User_Logic {
                 return "Registration Fail.";
                 break;
             default:
-                if(response){
-                    return response;
+                if(response_field){
+                    return response_field;
                 }else{
                     return "Error Message Not Availble";
                 }
