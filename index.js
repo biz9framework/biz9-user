@@ -75,7 +75,7 @@ class User_Field {
     static WEBSITE = 'website';
 }
 class User_Logic {
-    static get_message_by_response = (response) =>{
+    static get_message_by_response_field = (response) =>{
         switch(response){
             case User_Response_Field.EMAIL_FAIL:
                 return "Email address is not valid.";
