@@ -6,7 +6,7 @@ Description: BiZ9 Framework: User
 */
 const {Scriptz}=require("biz9-scriptz");
 const {Log,Str,Num,Obj,Response_Field}=require("biz9-utility");
-const {Data_Logic} = require("biz9-data-logic");
+const {Data_Logic,Data_Field,Data_Value_Type} = require("biz9-data-logic");
 
 class User_Url {
     static LOGIN="biz9/user/login";
@@ -228,13 +228,18 @@ class User_Logic {
         data.role=User_Logic.get_user_roles()[Num.get_id(User_Logic.get_user_roles().length)].value;
         data.username="username_"+ Num.get_id();
         data.first_name="First Name "+ Num.get_id();
-        data.last_name="First Name "+ Num.get_id();
+        data.last_name="Last Name "+ Num.get_id();
         data.email="email"+ Num.get_id() + "@email.com";
         data.city="City "+ Num.get_id();
         data.state= Region_Logic.get_states()[Num.get_id(Region_Logic.get_states().length)].label;
         data.country= Region_Logic.get_countries()[Num.get_id(Region_Logic.get_countries().length)].label;
         data.password="123456789Ab!";
         return data;
+    };
+    static get_foreign_user = (option) => {
+        option = !Obj.check_is_empty(option)  ? option : {};
+        option = Obj.merge(option,{title:'user'});
+        return Data_Logic.get_foreign(Data_Value_Type.ONE,User_Table.USER,Data_Field.ID,User_Field.USER_ID,option);
     };
 }
 class Region_Logic {

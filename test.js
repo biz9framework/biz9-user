@@ -27,7 +27,7 @@ describe('connect', function(){ this.timeout(25000);
             async function(call){
                 //-->
 
-                Log.w('get_message',User_Logic.get_message_by_response(User_Response.EMAIL_UNIQUE_FAIL));
+                Log.w('rrr',User_Logic.get_foreign_user());
             },
         ],
             function(error, result){
