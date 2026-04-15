@@ -253,7 +253,8 @@ class User_Logic {
     };
     static get_foreign_user = (option) => {
         option = !Obj.check_is_empty(option)  ? option : {};
-        option = Obj.merge(option,{title:'user'});
+        option = Obj.merge(option,{title:'user',not_found:User_Logic.get_not_found()});
+        //let cool = Data_Logic.get_foreign(Data_Value_Type.ONE,User_Table.USER,Data_Field.ID,User_Field.USER_ID,option);
         return Data_Logic.get_foreign(Data_Value_Type.ONE,User_Table.USER,Data_Field.ID,User_Field.USER_ID,option);
     };
 }
