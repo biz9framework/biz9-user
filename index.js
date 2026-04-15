@@ -6,7 +6,7 @@ Description: BiZ9 Framework: User
 */
 const {Scriptz}=require("biz9-scriptz");
 const {Log,Str,Num,Obj,Response_Field}=require("biz9-utility");
-const {Data_Logic,Data_Field,Data_Value_Type} = require("biz9-data-logic");
+const {Data_Logic,Data_Field,Data_Value_Type,Data_Title} = require("biz9-data-logic");
 
 class User_Url {
     static LOGIN="biz9/user/login";
@@ -221,6 +221,21 @@ class User_Logic {
             users.push(User_Logic.get_test_user());
         }
         return users;
+    };
+    static get_not_found = (id,option) =>{
+        option=!Obj.check_is_empty(option)?option:{};
+        let table = User_Table.USER;
+        if(!id){
+            id = 0;
+        }
+        let data = Data_Logic.get(table,id);
+        data.id = 0;
+        data.id_key = id;
+        data.username="not_found";
+        data.first_name="Uknown";
+        data.last_name="Uknown";
+        data.source = Data_Title.SOURCE_NOT_FOUND;
+        return data;
     };
     static get_test_user = (option) =>{
         option = !Obj.check_is_empty(option) ? option : {};

@@ -27,7 +27,7 @@ describe('connect', function(){ this.timeout(25000);
             async function(call){
                 //-->
 
-                Log.w('rrr',User_Logic.get_foreign_user());
+                Log.w('rrr',User_Logic.get_not_found(1));
             },
         ],
             function(error, result){
