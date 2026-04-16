@@ -145,12 +145,12 @@ class User_Logic {
             },
         ];
     };
-    static get_user_role_by_type = (type) =>{
-        let item_match =  User_Logic.get_user_roles().find(item_find => item_find.value === type);
+    static get_user_role_by_title = (title) =>{
+        let item_match =  User_Logic.get_user_roles().find(item_find => item_find.title === title);
         if(item_match){
             return item_match;
         }else{
-            return {value:Str.get_title_url(User_Title.GUEST),title:User_Title.GUEST,title:User_Title.GUEST};
+            return User_Logic.get_user_roles().find(item_find => item_find.title === User_Title.GUEST);
         }
     };
     static get_country_state_city = (item) =>{

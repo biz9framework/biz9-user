@@ -27,7 +27,7 @@ describe('connect', function(){ this.timeout(25000);
             async function(call){
                 //-->
 
-                Log.w('rrr',User_Logic.get_not_found(1));
+                Log.w('rrr',User_Logic.get_user_role_by_title(User_Title.SUPER_ADMIN));
             },
         ],
             function(error, result){
