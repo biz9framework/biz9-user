@@ -51,14 +51,6 @@ class User_Response_Field {
     static REGISTER_CONFIRM = 'register_confirm';
     static REGISTER_FAIL = 'register_fail';
 }
-class User_Type {
-    //role
-    static ADMIN='admin';
-    static GUEST='guest';
-    static MANAGER='manager';
-    static SUPER_ADMIN='super_admin';
-    static USER='user';
-}
 class User_Field {
     static USER = 'user';
     static USER_ID = 'user_id';
@@ -131,29 +123,24 @@ class User_Logic {
     static get_user_roles = () =>{
         return [
             {
-                value:User_Type.SUPER_ADMIN,
-                label:User_Title.SUPER_ADMIN,
+                value:Str.get_title_url(User_Title.SUPER_ADMIN),
                 title:User_Title.SUPER_ADMIN
             },
 
             {
-                value:User_Type.ADMIN,
-                label:User_Title.ADMIN,
+                value:Str.get_title_url(User_Title.ADMIN),
                 title:User_Title.ADMIN
             },
             {
-                value:User_Type.MANAGER,
-                label:User_Title.MANAGER,
-                title:User_Type.MANAGER
+                value:Str.get_title_url(User_Title.MANAGER),
+                title:User_Title.MANAGER
             },
             {
-                value:User_Type.USER,
-                label:User_Title.USER,
+                value:Str.get_title_url(User_Title.USER),
                 title:User_Title.USER
             },
             {
-                value:User_Type.GUEST,
-                label:User_Title.GUEST,
+                value:Str.get_title_url(User_Title.GUEST),
                 title:User_Title.GUEST
             },
         ];
@@ -163,7 +150,7 @@ class User_Logic {
         if(item_match){
             return item_match;
         }else{
-            return {value:User_Type.GUEST,label:User_Title.GUEST,title:User_Title.GUEST};
+            return {value:Str.get_title_url(User_Title.GUEST),title:User_Title.GUEST,title:User_Title.GUEST};
         }
     };
     static get_country_state_city = (item) =>{
@@ -1328,6 +1315,5 @@ module.exports = {
     User_Stat,
     User_Title,
     User_Table,
-    User_Type,
     User_Url
 };
