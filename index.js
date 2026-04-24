@@ -24,6 +24,14 @@ class User_Table {
     static Blank='blank_biz';
     static USER='user_biz';
 }
+class User_Type{
+    static USER='user';
+    static SUPER_ADMIN='super_admin';
+    static ADMIN='admin';
+    static MANAGER='manager';
+    static USER='user';
+    static GUEST='guest';
+}
 class User_Title {
     static USER='User';
     static SUPER_ADMIN='Super Admin';
@@ -76,7 +84,7 @@ class User_Logic {
             case User_Response_Field.EMAIL_UNIQUE_FAIL:
                 return "Email address is taken.";
                 break;
-             case User_Response_Field.USERNAME_UNIQUE_FAIL:
+            case User_Response_Field.USERNAME_UNIQUE_FAIL:
                 return "Username is taken.";
                 break;
             case User_Response_Field.PASSWORD_FAIL:
@@ -123,24 +131,24 @@ class User_Logic {
     static get_user_roles = () =>{
         return [
             {
-                value:Str.get_title_url(User_Title.SUPER_ADMIN),
+                value:User_Type.SUPER_ADMIN,
                 title:User_Title.SUPER_ADMIN
             },
 
             {
-                value:Str.get_title_url(User_Title.ADMIN),
+                value:User_Type.ADMIN,
                 title:User_Title.ADMIN
             },
             {
-                value:Str.get_title_url(User_Title.MANAGER),
+                value:User_Type.MANAGER,
                 title:User_Title.MANAGER
             },
             {
-                value:Str.get_title_url(User_Title.USER),
+                value:User_Type.USER,
                 title:User_Title.USER
             },
             {
-                value:Str.get_title_url(User_Title.GUEST),
+                value:User_Type.GUEST,
                 title:User_Title.GUEST
             },
         ];
@@ -241,7 +249,6 @@ class User_Logic {
     static get_foreign_user = (option) => {
         option = !Obj.check_is_empty(option)  ? option : {};
         option = Obj.merge(option,{title:'user',not_found:User_Logic.get_not_found()});
-        //let cool = Data_Logic.get_foreign(Data_Value_Type.ONE,User_Table.USER,Data_Field.ID,User_Field.USER_ID,option);
         return Data_Logic.get_foreign(Data_Value_Type.ONE,User_Table.USER,Data_Field.ID,User_Field.USER_ID,option);
     };
 }
@@ -1314,6 +1321,7 @@ module.exports = {
     User_Response_Field,
     User_Stat,
     User_Title,
+    User_Type,
     User_Table,
     User_Url
 };
