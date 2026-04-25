@@ -191,7 +191,8 @@ class User_Logic {
         return !Str.check_is_null(String(str_first_name + " " + str_last_name)) ? String(str_first_name + " " + str_last_name).trim() : "N/A";
     }
     static get_guest = () =>{
-        return Data_Logic.get(User_Table.USER,0,{data:{is_guest:true,title_url:'guest',first_name:'Guest',last_name:'User',email:'guest@email.com',title:"Guest",country:"United States"}});
+        let user_id = Num.get_id();
+        return Data_Logic.get(User_Table.USER,Num.get_id(),{data:{username:'username_'+user_id,is_guest:true,first_name:'Guest',last_name:'User',email:'guest@email.com',title:"Guest",country:"United States"}});
     }
     static get_request_user = (req) =>{
         if(!req || !req.session.user){
