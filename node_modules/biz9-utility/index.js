@@ -26,7 +26,7 @@ class Response_Field{
     static POST_FAIL = 'post_fail';
 }
 class Response_Logic{
-   static get_response = () => {
+    static get_response = () => {
         return {status:Status_Type.OK,messages:[]};
     }
     static get = () => {
@@ -173,13 +173,13 @@ class Num {
 }
 class Obj {
     static find = (field,value,items) => {
-         return items.find(item_find => item_find[field] === value);
+        return items.find(item_find => item_find[field] === value);
     }
     static find_last = (field,value,items) => {
-         return items.findLast(item_find => item_find[field] === value);
+        return items.findLast(item_find => item_find[field] === value);
     }
     static filter = (field,value,items) => {
-         return items.filter(item_find => item_find[field] === value);
+        return items.filter(item_find => item_find[field] === value);
     }
     static sort_items_by_field = (items,sort_field,sort_type) => {
         if(!sort_type){
@@ -452,6 +452,17 @@ class Str {
         const regex = new RegExp(escapeRegExp(val), 'i');
         return regex.test(src_str);
     };
+    static check_is_hex = (value) =>{
+        const regex = /^[0-9a-fA-F]{24}$/;
+        if(!value){
+            return false;
+        }
+        if (regex.test(value)) {
+           return true;
+        } else {
+            return false
+        }
+    };
     static check_is_image = (filename) =>{
         let is_true = false;
         const imageExtensions = /\.(jpg|jpeg|png|gif|bmp|webp|svg|svg+xml)$/i;
@@ -470,7 +481,7 @@ class Str {
 }
 class DateTime {
     static get_pretty = (date_time) => {
-     return prettydate.format(new Date(date_time));
+        return prettydate.format(new Date(date_time));
     };
     static get = (option) => {
         option = option ? option : {};
