@@ -60,6 +60,7 @@ class User_Response_Field {
     static REGISTER_FAIL = 'register_fail';
 }
 class User_Field {
+    static ID = 'id';
     static USER = 'user';
     static USER_ID = 'user_id';
     static CITY = 'city';
