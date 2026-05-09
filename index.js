@@ -193,7 +193,7 @@ class User_Logic {
     }
     static get_guest = () =>{
         let user_id = Str.get_id();
-        return Data_Logic.get(User_Table.USER,Num.get_id(),{data:{username:'username_'+user_id,is_guest:true,first_name:'Guest',last_name:'User',email:'guest@email.com',title:"Guest",country:"United States"}});
+        return Data_Logic.get(User_Table.USER,Str.get_id(),{data:{username:'username_'+user_id,is_guest:true,first_name:'Guest',last_name:'User',email:'guest@email.com',title:"Guest",country:"United States"}});
     }
     static get_request_user = (req) =>{
         if(!req || !req.session.user){
@@ -238,13 +238,13 @@ class User_Logic {
         option = !Obj.check_is_empty(option) ? option : {};
         let data = Data_Logic.get(User_Table.USER,0,option);
         data.role=User_Logic.get_user_roles()[Num.get_id(User_Logic.get_user_roles().length)].value;
-        data.username="username_"+ Num.get_id();
-        data.first_name="First Name "+ Num.get_id();
-        data.last_name="Last Name "+ Num.get_id();
-        data.email="email"+ Num.get_id() + "@email.com";
-        data.city="City "+ Num.get_id();
-        data.state= Region_Logic.get_states()[Num.get_id(Region_Logic.get_states().length)].label;
-        data.country= Region_Logic.get_countries()[Num.get_id(Region_Logic.get_countries().length)].label;
+        data.username="username_"+ Str.get_id();
+        data.first_name="First Name "+ Str.get_id();
+        data.last_name="Last Name "+ Str.get_id();
+        data.email="email"+ Str.get_id() + "@email.com";
+        data.city="City "+ Str.get_id();
+        data.state= Region_Logic.get_states()[Str.get_id(Region_Logic.get_states().length)].label;
+        data.country= Region_Logic.get_countries()[Str.get_id(Region_Logic.get_countries().length)].label;
         data.password="123456789Ab!";
         return data;
     };
