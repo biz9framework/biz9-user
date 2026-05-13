@@ -6,6 +6,7 @@ Description: BiZ9 Framework: User
 */
 const {Scriptz}=require("biz9-scriptz");
 const {Log,Str,Num,Obj,Response_Field}=require("biz9-utility");
+const {Service}=require('./service');
 const {Data_Logic,Data_Field,Data_Value_Type,Data_Title} = require("biz9-data-logic");
 
 class User_Url {
@@ -13,8 +14,7 @@ class User_Url {
     static LOGOUT="biz9/user/logout";
     static REGISTER="biz9/user/register";
     static POST="biz9/user/post";
-    static PING_GET="biz9/user/ping_get";
-    static PING_POST="biz9/user/ping_post";
+    static PING="biz9/user/ping";
 }
 class User_Stat {
     static POST_LOGIN="post_login";
