@@ -4,11 +4,11 @@ Author: Brandon Poole Sr. (biz9framework@gmail.com)
 License GNU General Public License v3.0
 Description: BiZ9 Framework: Data - Test
 */
-// biz9 --
-const {Log,Str,Obj,Response_Logic,Response_Field,Status_Type,Num}=require("/home/think1/www/doqbox/biz9-framework/biz9-utility/source");
-const {Data_Logic,Data_Url}=require("/home/think1/www/doqbox/biz9-framework/biz9-data-app/source");
-const {User_Logic,User_Field,User_Type,User_Table,User_Response_Field,User_Url}=require("/home/think1/www/doqbox/biz9-framework/biz9-user/source");
-const {Remote} = require("/home/think1/www/doqbox/biz9-framework/biz9-remote/source");
+//  -- biz9 --
+const {Log,Str,Obj,Response_Logic,Response_Field,Status_Type}=require("biz9-utility");
+const {Data_Logic,Data_Url}=require("biz9-data-app");
+const {User_Logic,User_Field,User_Response_Field,User_Url}=require("./");
+const {Remote} = require("biz9-remote");
 const {Service}=require('./service');
 const {Config,Data_Config,Table,Key}=require('./constant');
 // -- other --
@@ -16,17 +16,17 @@ const async = require('async');
 var assert = require('better-assert');
 
 /* -- DEFINE --
- * ping
- * register / (user_obj)
- * login / (user_obj)
- * post / (user_obj)
+ * 1. ping
+ * 2. register
+ * 3. login
+ * 4. post
 */
 // -- GLOBALZ --
 let USER = User_Logic.get_test();
 let USER_CHECK = User_Logic.get_test();
 
 //9_ping - 9_test_ping
-describe.skip('ping', function() {
+describe('ping', function() {
     let response=Response_Logic.get();
     let data = {};
     let option = {};

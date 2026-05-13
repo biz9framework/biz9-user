@@ -7,7 +7,7 @@ Description: BiZ9 Framework: User
 const {Scriptz}=require("biz9-scriptz");
 const {Log,Str,Num,Obj,Response_Field}=require("biz9-utility");
 const {Service}=require('./service');
-const {Data_Logic,Data_Field,Data_Value_Type,Data_Title} = require("biz9-data-logic");
+const {Data_Logic,Data_Field,Data_Value_Type,Data_Title} = require("biz9-data-app");
 
 class User_Url {
     static LOGIN="biz9/user/login";

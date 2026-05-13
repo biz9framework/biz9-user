@@ -13,6 +13,8 @@ class Status_Type{
     static SUCCESS = 'SUCCESS';
 }
 class Response_Field{
+    static TITLE = 'app_title';
+    static APP_ID = 'app_id';
     static PROJECT_TITLE = 'project_title';
     static MESSAGES = 'messages';
     static STATUS = 'status';
@@ -24,6 +26,7 @@ class Response_Field{
     static GET_FAIL = 'get_fail';
     static POST_CONFIRM = 'post_confirm';
     static POST_FAIL = 'post_fail';
+    static PING_CONFIRM = 'ping_confirm';
 }
 class Response_Logic{
     static get_response = () => {
@@ -100,29 +103,26 @@ class Form{
 }
 class Log{
     static w = (title,str) => {
-        let date_time = DateTime.get_date_time(DateTime.get(),{format:'h:mm-a-D-MMMM-YYYY'});
         if(!str){
-            str='null';
+            str=null;
         }
-        console.log(String(title).toUpperCase()+ '___START__________________'+date_time);
-        console.log(str);
-        console.log(String(title).toUpperCase()+ '___END_____________________'+date_time);
+        if(str){
+            console.log(Str.get_upper_case(title) + ":", str);
+        }else{
+            console.log(title);
+        }
+        console.log("___");
     };
-    static error = (title,str) => {
-        let date_time = DateTime.get_date_time(DateTime.get(),{format:'h:mm-a-D-MMMM-YYYY'});
+    static w = (title,str) => {
         if(!str){
-            str='null';
+            str=null;
         }
-        if(!str){
-            str=title;
-            title='';
+        if(str){
+            console.error(Str.get_upper_case(title) + ":", str);
+        }else{
+            console.error(title);
         }
-        if(!str){
-            str='error null';
-        }
-        console.error(String(title).toUpperCase()+ '___START__________________'+date_time);
-        console.error(str);
-        console.error(String(title).toUpperCase()+ '___END_____________________'+date_time);
+        console.log("___");
     };
     static append = (message,new_message) => {
         let append = false;
@@ -140,11 +140,12 @@ class Log{
     };
 }
 class Num {
-    static get_id = (max) => {
+    static get_id = (max,option) => {
+         option = !Obj.check_is_empty(option) ? option : {non_zero:true};
         if(!max){
             max = 99999;
         }
-        let min = 0;
+        let min = option.non_zero ? 1 : 0;
         return Math.floor(Math.random() * (max - min)) + min;
     };
     static get_decimal = (n,decimal) => {
@@ -229,9 +230,6 @@ class Obj {
     static check_is_object = (value) =>{
         return value === null || (typeof value !== 'object' && typeof value !== 'function');
     }
-    static check_is_value = (value) =>{
-        return value !== Object(value);
-    }
     static get_distinct = (src_items, distinct_field) => {
         return src_items.filter((obj, index, self) =>
             index === self.findIndex((t) => t[distinct_field] === obj[distinct_field])
@@ -248,12 +246,13 @@ class Str {
             return v.toString(16);
         });
     };
-    static get_id = (max) => {
+    static get_id = (max,option) => {
+        option = !Obj.check_is_empty(option) ? option : {non_zero:true};
         if(!max){
             max = 99999;
         }
-        let min = 0;
-        return Math.floor(Math.random() * (max - min)) + min;
+        let min = option.non_zero ? 1 : 0;
+        return  String(Math.floor(Math.random() * (max - min)) + min);
     };
     static check_is_guid = (str) => {
         const guidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
@@ -262,6 +261,12 @@ class Str {
     static get_cent = (n) => {
         return  parseInt((Number(number)*100)).toString();
     };
+    static get_upper_case = (str) => {
+        if(!str){
+            str='';
+        }
+        return str.toUpperCase();
+    }
     static get_plural = (str) => {
         if(!str){
             str='';
