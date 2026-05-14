@@ -113,7 +113,7 @@ class Log{
         }
         console.log("___");
     };
-    static w = (title,str) => {
+    static error = (title,str) => {
         if(!str){
             str=null;
         }
