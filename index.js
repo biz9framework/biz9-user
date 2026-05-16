@@ -209,16 +209,6 @@ class User_Logic {
         req.session.user=null;
         delete req.session.user;
     };
-    static get_test = (option) =>{
-        return User_Logic.get_test_user(option);
-    };
-    static get_test_users = (count,option) =>{
-        let users = [];
-        for(let a = 0; a < count; a++){
-            users.push(User_Logic.get_test_user());
-        }
-        return users;
-    };
     static get_not_found = (id,option) =>{
         option=!Obj.check_is_empty(option)?option:{};
         let table = User_Table.USER;
@@ -232,20 +222,6 @@ class User_Logic {
         data.first_name="Uknown";
         data.last_name="Uknown";
         data.source = Data_Title.SOURCE_NOT_FOUND;
-        return data;
-    };
-    static get_test_user = (option) =>{
-        option = !Obj.check_is_empty(option) ? option : {};
-        let data = Data_Logic.get(User_Table.USER,0,option);
-        data.role=User_Logic.get_user_roles()[Num.get_id(User_Logic.get_user_roles().length)].value;
-        data.username="username_"+ Str.get_id();
-        data.first_name="First Name "+ Str.get_id();
-        data.last_name="Last Name "+ Str.get_id();
-        data.email="email"+ Str.get_id() + "@email.com";
-        data.city="City "+ Str.get_id();
-        data.state= Region_Logic.get_states()[Str.get_id(Region_Logic.get_states().length)].label;
-        data.country= Region_Logic.get_countries()[Str.get_id(Region_Logic.get_countries().length)].label;
-        data.password="123456789Ab!";
         return data;
     };
     static get_foreign_user = (option) => {
